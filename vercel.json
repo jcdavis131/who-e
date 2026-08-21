@@ -1,0 +1,11 @@
+{
+  "framework": null,
+  "cleanUrls": true,
+  "buildCommand": null,
+  "outputDirectory": "public",
+  "headers": [
+    { "source": "/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }] },
+    { "source": "/sw.js", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
+  ],
+  "rewrites": [{ "source": "/", "destination": "/index.html" }]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "who-e",
+  "version": "1.0.0",
+  "description": "WHO-E — Compound & Sight Word games for early readers",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts || node src/index.ts",
+    "test": "vitest run"
+  },
+  "type": "module"
+}

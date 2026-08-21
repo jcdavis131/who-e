@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>WHO•E — Word Games for Early Readers</title>
+<meta name="description" content="Compound words + sight words for new and early readers. Clean, cozy, no ads."/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='8' y='8' width='84' height='84' rx='16' fill='%23FEFCF9' stroke='%23111' stroke-width='6'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-family='ui-sans-system' font-weight='900' font-size='48' fill='%23EB6834'%3EW%3C/text%3E%3C/svg%3E">
+<style>
+:root{--paper:#FEFCF9;--paper-2:#FFFEFD;--ink:#111;--void:#080A0F;--orange:#EB6834;--ok:#1A8F5E;--sky:#4A7AFF;--pink:#FF6B8A;--border:2.5px solid var(--ink);--shadow:4px 4px 0 var(--ink);--r:14px;--nav:42px}
+*{box-sizing:border-box} html,body{margin:0;background:var(--paper);color:var(--ink);font-family:ui-sans-system,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.35}
+button,input{font:inherit}
+.nav{height:var(--nav);position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 10px;font-family:ui-monospace,Menlo,monospace;font-weight:800;letter-spacing:.02em}
+.nav .brand{display:flex;align-items:center;gap:10px}
+.nav .mark{width:28px;height:28px;border:var(--border);box-shadow:2px 2px 0 var(--ink);border-radius:8px;background:#fff;display:grid;place-items:center;color:var(--orange);font-weight:900}
+.nav-actions{display:flex;gap:8px}
+.nav a,.btn{border:var(--border);padding:6px 10px;background:#fff;box-shadow:var(--shadow);font-family:ui-monospace,monospace;font-weight:800;cursor:pointer;text-decoration:none;color:var(--ink);border-radius:10px}
+.btn:active,.nav a:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn.orange{background:var(--orange);color:#fff}
+.btn.sky{background:var(--sky);color:#fff}
+.btn.green{background:var(--ok);color:#fff}
+.btn.pill{border-radius:999px;padding:8px 16px}
+.wrap{max-width:1040px;margin:0 auto;padding:14px}
+.hero{border:var(--border);box-shadow:var(--shadow);border-radius:18px;background:var(--paper-2);padding:14px;display:grid;grid-template-columns:1.1fr .9fr;gap:12px}
+@media(max-width:860px){.hero{grid-template-columns:1fr}}
+.h1{font-weight:900;letter-spacing:-.02em;font-size:clamp(28px,5vw,42px);line-height:.98;margin:0}
+.sub{font-size:14px;color:#444;margin-top:8px;max-width:46ch}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+@media(max-width:760px){.tiles{grid-template-columns:1fr}}
+.tile{border:var(--border);box-shadow:var(--shadow);border-radius:14px;background:#fff;padding:12px;cursor:pointer;text-align:left}
+.tile h3{margin:0 0 4px;font-size:16px}
+.tile p{margin:0;color:#555;font-size:12.5px}
+.badge{display:inline-block;border:var(--border);border-radius:999px;padding:2px 8px;font-family:ui-monospace,monospace;font-size:10.5px;background:#fff;margin-right:6px}
+.stage{margin-top:14px;display:grid;grid-template-columns:380px 1fr;gap:12px}
+@media(max-width:980px){.stage{grid-template-columns:1fr}}
+.card{border:var(--border);box-shadow:var(--shadow);border-radius:16px;background:#fff;padding:12px}
+.card h2{margin:0 0 6px;font-size:16px;font-family:ui-monospace,monospace}
+.stack{display:flex;gap:8px;flex-wrap:wrap}
+.pill{border:var(--border);border-radius:999px;padding:6px 10px;background:#fff;box-shadow:2px 2px 0 var(--ink);font-family:ui-monospace,monospace;font-size:12px}
+.q{font-size:28px;font-weight:900;letter-spacing:-.01em}
+.comp-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.line{border:var(--border);border-radius:12px;padding:10px 12px;background:var(--paper);display:flex;align-items:center;justify-content:space-between;font-weight:800;font-size:18px}
+.line small{font-family:ui-monospace,monospace;font-size:11px;color:#666;font-weight:600}
+.kbd{display:inline-grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-top:10px}
+.kbd button{border:var(--border);background:#fff;border-radius:10px;padding:10px 0;font-weight:900;box-shadow:2px 2px 0 var(--ink);cursor:pointer}
+.kbd button:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
+.kbd button.hit{background:var(--ink);color:#fff}
+.input{width:100%;border:var(--border);border-radius:12px;padding:12px 14px;font-size:22px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;box-shadow:2px 2px 0 var(--ink)}
+.stars{font-size:18px}
+.progress{height:10px;border:var(--border);border-radius:999px;background:#fff;overflow:hidden}
+.progress>i{display:block;height:100%;background:var(--orange);width:0%}
+.footer{margin-top:18px;border-top:var(--border);padding-top:10px;font-family:ui-monospace,monospace;font-size:11px;color:#666;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.word-btn{border:var(--border);padding:14px 10px;border-radius:12px;background:#fff;box-shadow:var(--shadow);font-weight:900;font-size:18px;cursor:pointer}
+.word-btn.correct{background:var(--ok);color:#fff}
+.word-btn.wrong{background:#fff;border-color:#FF3860;animation:shake .22s}
+@keyframes shake{0%,100%{transform:translate(0)}25%{transform:translate(-2px,1px)}75%{transform:translate(2px,-1px)}}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="brand"><div class="mark">W</div><div>WHO•E <span style="color:var(--orange)">EARLY READER</span></div><span class="badge" style="margin-left:8px;background:#fff">BETA</span></div>
+  <div class="nav-actions"><a href="#" id="btnDaily">Daily</a><a href="#" id="btnClear">Clear</a><a class="orange" style="background:var(--orange);color:#fff;border:var(--border);box-shadow:var(--shadow);border-radius:10px;padding:6px 10px;text-decoration:none;font-family:ui-monospace,monospace;font-weight:800" href="https://dumbmodel.com" target="_blank">hub →</a></div>
+</div>
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <h1 class="h1">Compound words<br/>+ sight words,<br/>built for <span style="color:var(--orange)">new readers.</span></h1>
+      <p class="sub">True to your video: 3 clues share 1 hidden word — BOY___ / ___SHIP / GIRL___ → FRIEND. Plus quick sight-word reps with big taps, voice, and 4-star rewards. Zero ads, zero deps, saves offline.</p>
+      <div class="tiles" id="gamePicker">
+        <button class="tile" data-game="compound"><h3>🧩 Compound Link</h3><p>3 prompts → 1 bridging word</p><span class="badge">VIDEO</span><span class="badge">DAILY</span></button>
+        <button class="tile" data-game="sight"><h3>👀 Sight Pop</h3><p>Hear it, tap it. Dolch Pre-K→3rd</p><span class="badge">AUDIO</span><span class="badge">STARS</span></button>
+        <button class="tile" data-game="build"><h3>🔤 Build-a-Word</h3><p>Unscramble + type the sight word</p><span class="badge">WRITE</span><span class="badge">KEYBOARD</span></button>
+      </div>
+      <div class="stack" style="margin-top:10px"><div class="pill" id="pillDay">DAY —</div><div class="pill">⭐ <strong id="pillStars">0</strong>/471 total</div><div class="pill">🔥 streak <strong id="pillStreak">0</strong></div><button class="btn pill" id="sayHelp">🔊 Say</button></div>
+    </div>
+    <div class="card" style="background:var(--void);color:#FEFCF9;border-color:#111">
+      <h2 style="color:#FEFCF9">How to play (from your video)</h2>
+      <div style="font-family:ui-monospace,monospace;font-size:12px;line-height:1.5;color:#EDE9E2">
+        <div>• Each puzzle shows: <span style="color:var(--orange)">BOY___ / ___SHIP / GIRL___</span></div>
+        <div>• The hidden word is <b style="color:#fff">FRIEND</b>: boyFRIEND, FRIENDship, girlFRIEND</div>
+        <div>• Type the word, tap Go. Same daily seed = <code>same-link-same-stars</code></div>
+        <div>• ⭐⭐⭐⭐ when you solve fast • hint 2 → 3 • 0:53 timer from iOS reference</div>
+        <div>• For early readers: audio on tap, big keys, gentle shake for miss</div>
+        <hr style="border:none;border-top:1px dashed #333;margin:10px 0"/>
+        <div>CONGRATS! screen: <code>BEATNIK / DOWNBEAT / UPBEAT → BEAT</code> 4 gold stars</div>
+        <div>Paper #FEFCF9 · Void #080A0F · 2px ink · 4px shadow · 40px mono nav</div>
+      </div>
+      <div style="margin-top:10px" class="stack"><button class="btn orange" id="startCompound">Play Compound →</button><button class="btn" id="startSight">Sight →</button></div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="card" id="leftCard">
+      <h2 id="leftTitle">🧩 Compound Link — Daily</h2>
+      <div class="progress" style="margin:8px 0"><i id="prog"></i></div>
+      <div class="stack"><div class="pill">⏱ <strong id="timer">0:53</strong></div><div class="pill">hint <strong id="hintLeft">2</strong></div><div class="pill">⭐ <strong id="starsThis">0</strong>/4</div><button class="btn pill" id="btnHint">💡 Hint</button></div>
+      <div id="leftMount" style="margin-top:10px"></div>
+    </div>
+    <div class="card" id="rightCard">
+      <h2>🔤 Sight words — Practice lane</h2>
+      <div id="rightMount"></div>
+    </div>
+  </div>
+
+  <div class="footer"><div>WHO•E — early reader lab • built zero-deps • offline-capable • speech synthesis • free-for-users footer</div><div><span id="footSeed">seed …</span> • <span id="footLcg">LCG glibc</span> • <span id="footDaily">daily ?daily=YYYYMMDD&n=1/3/5</span></div></div>
+</div>
+
+<script type="module">
+const $=s=>document.getElementById(s);
+const dayISO=()=>new Date().toISOString().slice(0,10).replace(/-/g,'');
+let dayCode=new URLSearchParams(location.search).get('daily')||dayISO();
+let urlN=parseInt(new URLSearchParams(location.search).get('n')||'1',10);
+$('pillDay').textContent='DAY '+dayCode.slice(4);
+$('footDaily').textContent='?daily='+dayCode+'&n=1/3/5';
+$('footSeed').textContent='seed '+(dayCode);
+
+// --- LCG same as hoops 189831298 triple
+function lcg(s){return (s*1103515245+12345)&0x7fffffff}
+function seedFromDay(d){let s=0;for(let ch of d)s=(s*31+ch.charCodeAt(0))>>>0;return s%0x7fffffff}
+let baseSeed=seedFromDay(dayCode);
+function dailyIndices(n,mod){let cur=baseSeed; let out=[]; for(let i=0;i<n;i++){cur=lcg(cur); out.push(cur%mod)} return out}
+let triple=dailyIndices(3, 20000);
+$('footLcg').textContent='triple['+triple.join(',')+'] LCG glibc';
+
+// --- compounding dataset (true to video + expanded for early readers)
+const COMPOUNDS=[
+ // video truth
+ {answer:'FRIEND', prompts:['BOY___','___SHIP','GIRL___'], clue:'You are my friend'},
+ {answer:'PAN', prompts:['___CAKE','___HANDLE','SAUCE___'], clue:'It heats in the kitchen'},
+ {answer:'BEAT', prompts:['BEAT___','DOWN___','UP___'], alt:['BEATNIK','DOWNBEAT','UPBEAT'], clue:'Music rhythm is the ___', finale:true},
+ // early reader friendly
+ {answer:'BALL', prompts:['BASE___','FOOT___','BASKET___']},
+ {answer:'SUN', prompts:['___FLOWER','___SET','___SHINE']},
+ {answer:'BOOK', prompts:['NOTE___','STORY___','___MARK']},
+ {answer:'HOME', prompts:['___WORK','___MADE','DOG___']},
+ {answer:'STAR', prompts:['___FISH','___BURST','ALL___']},
+ {answer:'RAIN', prompts:['___BOW','___DROP','___COAT']},
+ {answer:'LIGHT', prompts:['___HOUSE','___BULB','NIGHT___']},
+ {answer:'PLAY', prompts:['___GROUND','___MATE','RE___']},
+ {answer:'BUTTER', prompts:['___FLY','___CUP','PEANUT___']},
+ {answer:'POP', prompts:['LOLLI___','___CORN','___SICLE']},
+ {answer:'TIME', prompts:['BED___','___TABLE','DAY___']},
+ {answer:'FIRE', prompts:['___FLY','___PLACE','CAMPF___']},
+ {answer:'WATER', prompts:['___MELON','___FALL','___PROOF']},
+ {answer:'SNOW', prompts:['___MAN','___FLAKE','___BALL']},
+ {answer:'BIRD', prompts:['___HOUSE','HUMMING___','___BATH']},
+ {answer:'SEA', prompts:['___SHELL','___HORSE','___SIDE']},
+ {answer:'KEY', prompts:['DON___','___BOARD','TUR___']},
+ {answer:'TOOTH', prompts:['___BRUSH','___PASTE','___ACHE']},
+];
+
+const DOLCH={
+ 'Pre-K':['a','and','away','big','blue','can','come','down','find','for','funny','go','help','here','I','in','is','it','jump','little','look','make','me','my','not','one','play','red','run','said','see','the','three','to','two','up','we','where','yellow','you'],
+ 'K':['all','am','are','at','ate','be','black','brown','but','came','did','do','eat','four','get','good','have','he','into','like','must','new','no','now','on','our','out','please','pretty','ran','ride','saw','say','she','so','soon','that','there','they','this','too','under','want','was','well','went','what','white','who','will','with','yes'],
+ '1st':['after','again','an','any','as','ask','by','could','every','fly','from','give','going','had','has','her','him','his','how','just','know','let','live','may','of','old','once','open','over','put','round','some','stop','take','thank','them','then','think','walk','were','when'],
+ '2nd':['always','around','because','been','before','best','both','buy','call','cold','does','dont','fast','first','five','found','gave','goes','green','its','made','many','off','or','pull','read','right','sing','sit','sleep','tell','their','these','those','upon','us','use','very','wash','which','why','wish','work','would','write','your'],
+ '3rd':['about','better','bring','carry','clean','cut','done','draw','drink','eight','fall','far','full','got','grow','hold','hot','hurt','if','keep','kind','laugh','light','long','much','myself','never','only','own','pick','seven','shall','show','six','small','start','ten','today','together','try','warm']
+};
+
+let totalStars = parseInt(localStorage.getItem('whoe_stars')||'0',10);
+$('pillStars').textContent=totalStars;
+let streak = parseInt(localStorage.getItem('whoe_streak')||'0',10);
+$('pillStreak').textContent=streak;
+
+let currentGame='compound';
+let puzzleIdx=0, timerSec=53, timerHandle=null, hints=2, starsThis=0, solved=0;
+
+function pickPuzzles(n){
+  let idxs=dailyIndices(n*3, COMPOUNDS.length);
+  let uniq=[...new Set(idxs)].slice(0,n);
+  while(uniq.length<n){ uniq.push(Math.floor(Math.random()*COMPOUNDS.length)) }
+  return uniq.map(i=>COMPOUNDS[i%COMPOUNDS.length]);
+}
+let dailyPuzzles=pickPuzzles(urlN===5?5:urlN===3?3:1);
+
+function speak(t){ try{ let u=new SpeechSynthesisUtterance(t); u.rate=0.9; speechSynthesis.speak(u);}catch(e){} }
+
+function renderCompound(){
+  $('leftTitle').textContent='🧩 Compound Link — '+(urlN===5?'Full 5':urlN===3?'Triple 3':'Solo 1');
+  const list=dailyPuzzles;
+  const p=list[puzzleIdx];
+  const fines=p.finale?"CONGRATS!":"";
+  $('leftMount').innerHTML=`
+    <div class="q">${fines?fines:`Link #${puzzleIdx+1}/${list.length}`}</div>
+    <div class="comp-grid">
+      ${p.prompts.map(pr=>`<div class="line"><span>${pr.replace('___','<u style="text-decoration-thickness:3px">___</u>')}</span><small>${p.answer?'→ '+(pr.includes('___')? (pr.endsWith('___')? pr.slice(0,-3)+'<b>'+p.answer+'</b>' : '<b>'+p.answer+'</b>'+pr.slice(3)) : ''):''}</small></div>`).join('')}
+    </div>
+    <div style="margin-top:10px"><input id="ans" class="input" placeholder="type the middle word…" autocomplete="off" spellcheck="false"/></div>
+    <div class="kbd" id="kbd">
+      ${'QWERTYUIOPASDFGHJKLZXCVBNM'.split('').map(c=>`<button data-k="${c}">${c}</button>`).join('')}
+      <button data-k="⌫" style="grid-column: span 2;background:#111;color:#fff">⌫</button>
+      <button data-k="GO" style="grid-column: span 3;background:var(--orange);color:#fff">Go →</button>
+    </div>
+    <div style="margin-top:8px" class="stack"><span class="badge">CLUE</span><span style="font-size:13px;color:#444">${p.clue||'What word finishes each one?'}</span></div>
+    <div id="fb" style="margin-top:8px;font-weight:800"></div>
+  `;
+  const inp=$('ans');
+  const fb=$('fb');
+  const kbd=$('kbd');
+  function tryAnswer(){
+    let v=inp.value.trim().toUpperCase();
+    if(!v) return;
+    if(v===p.answer){
+      let bonus=Math.max(0, Math.ceil(timerSec/13));
+      let s= Math.min(4, 1+bonus+(hints>1?1:0));
+      starsThis=Math.max(starsThis,s);
+      $('starsThis').textContent=starsThis;
+      $('prog').style.width=((puzzleIdx+1)/list.length*100)+'%';
+      fb.textContent='✅ '+v+'! '+(p.alt?p.alt.join(' / ')+' → '+v:'');
+      fb.style.color='var(--ok)';
+      solved++; speak(v+', yes!');
+      totalStars+=s; localStorage.setItem('whoe_stars',totalStars); $('pillStars').textContent=totalStars;
+      streak++; localStorage.setItem('whoe_streak',streak); $('pillStreak').textContent=streak;
+      if(puzzleIdx<list.length-1){ setTimeout(()=>{puzzleIdx++; renderCompound()}, 900) } else {
+        setTimeout(()=>{ fb.innerHTML+='<div style="margin-top:8px">🎉 CONGRATS! '+list.map(x=>x.answer).join(' · ')+' — 4 gold stars like video ⭐⭐⭐⭐ — 471 total dream</div>'; clearInterval(timerHandle); }, 600);
+      }
+    } else {
+      fb.textContent='Not yet — try listening: 🔊 '+p.prompts.join(' / ');
+      fb.style.color='#B00'; inp.parentElement.animate([{transform:'translateX(-2px)'},{transform:'translateX(2px)'},{transform:'translateX(0)'}],{duration:180});
+    }
+  }
+  kbd.onclick=(e)=>{
+    let b=e.target.closest('button'); if(!b) return;
+    let k=b.dataset.k;
+    if(k==='GO') tryAnswer(); else if(k==='⌫') inp.value=inp.value.slice(0,-1); else { inp.value+=k; }
+    inp.focus();
+  };
+  inp.onkeydown=(e)=>{ if(e.key==='Enter') tryAnswer(); };
+  $('btnHint').onclick=()=>{
+    if(hints<=0) return;
+    hints--; $('hintLeft').textContent=hints+2; // show 2→3 like video
+    if(hints===1) fb.textContent='💡 Starts with '+p.answer[0]+' — '+p.prompts[0].replace('___','['+p.answer[0]+'...]'); 
+    else fb.textContent='💡 It has '+p.answer.length+' letters';
+    $('btnHint').disabled=hints<=0;
+    speak('Hint: starts with '+p.answer[0]);
+  };
+  setTimeout(()=>inp.focus(),80);
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(timerHandle);
+  timerSec=53; $('timer').textContent='0:'+String(timerSec).padStart(2,'0');
+  timerHandle=setInterval(()=>{ timerSec--; if(timerSec<0){ clearInterval(timerHandle); $('timer').textContent='0:00'; return; } $('timer').textContent='0:'+String(timerSec).padStart(2,'0'); }, 1000);
+}
+
+function renderSight(){
+  $('leftTitle').textContent='👀 Sight Pop — Tap the word';
+  let level=localStorage.getItem('whoe_level')||'Pre-K';
+  let wordPool=[...DOLCH[level]];
+  let queue=[...wordPool].sort(()=>Math.random()-0.5).slice(0,10);
+  let curIdx=0;
+  function next(){
+    if(curIdx>=queue.length){ $('leftMount').innerHTML='<div class="q">All done! 🎉</div><div class="stack"><button class="btn" id="again">Again</button><button class="btn orange" id="up">⬆ Level</button></div>'; $('again').onclick=renderSight; $('up').onclick=()=>{ let levels=Object.keys(DOLCH); let i=levels.indexOf(level); level=levels[(i+1)%levels.length]; localStorage.setItem('whoe_level',level); renderSight(); }; return; }
+    let target=queue[curIdx];
+    let distractors=[...wordPool].filter(w=>w!==target).sort(()=>Math.random()-0.5).slice(0,2);
+    let opts=[target,...distractors].sort(()=>Math.random()-0.5);
+    $('leftMount').innerHTML=`
+      <div class="stack"><span class="badge">${level}</span><span class="badge">#${curIdx+1}/${queue.length}</span></div>
+      <div class="q" style="margin:8px 0">Tap: <span style="color:var(--sky)">${target}</span> <button class="btn pill" id="say">🔊</button></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        ${opts.map(o=>`<button class="word-btn" data-w="${o}">${o}</button>`).join('')}
+      </div>
+    `;
+    $('say').onclick=()=>speak(target);
+    speak(target);
+    $('leftMount').querySelectorAll('.word-btn').forEach(b=>{
+      b.onclick=()=>{
+        let w=b.dataset.w;
+        if(w===target){ b.classList.add('correct'); totalStars++; $('pillStars').textContent=totalStars; localStorage.setItem('whoe_stars',totalStars); setTimeout(()=>{curIdx++; next()}, 480); }
+        else { b.classList.add('wrong'); }
+      }
+    })
+  }
+  next();
+}
+
+function renderBuild(){
+  $('leftTitle').textContent='🔤 Build-a-Word — Rearrange';
+  let level=localStorage.getItem('whoe_level')||'K';
+  let pool=DOLCH[level]; let target=pool[Math.floor(Math.random()*pool.length)];
+  let scrambled=target.split('').sort(()=>Math.random()-0.5).join('');
+  if(scrambled===target) scrambled=target.split('').reverse().join('');
+  $('leftMount').innerHTML=`
+    <div class="stack"><span class="badge">${level}</span><span class="badge">type it</span><button class="btn pill" id="say2">🔊 ${target}</button></div>
+    <div class="q" style="font-size:20px">Unscramble: <b style="letter-spacing:.18em">${scrambled.toUpperCase()}</b></div>
+    <input id="bAns" class="input" placeholder="type ${target}…" style="margin-top:8px"/>
+    <div id="bFb" style="margin-top:8px;font-weight:800"></div>
+    <div class="kbd" style="margin-top:10px">${'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(c=>`<button data-k="${c}">${c}</button>`).join('')}<button data-k="⌫" style="grid-column:span 2;background:#111;color:#fff">⌫</button><button data-k="GO" style="grid-column:span 3;background:var(--ok);color:#fff">Check</button></div>
+  `;
+  $('say2').onclick=()=>speak(target);
+  const inp=$('bAns'); const fb=$('bFb');
+  function check(){ let v=inp.value.trim().toLowerCase(); if(v===target.toLowerCase()){ fb.textContent='✅ '+target+'!'; fb.style.color='var(--ok)'; totalStars+=2; $('pillStars').textContent=totalStars; localStorage.setItem('whoe_stars',totalStars); speak('Yes, '+target); setTimeout(renderBuild, 700);} else { fb.textContent='Not yet — listen and look.'; fb.style.color='#B00'; } }
+  $('leftMount').querySelector('.kbd').onclick=(e)=>{ let b=e.target.closest('button'); if(!b) return; let k=b.dataset.k; if(k==='GO') check(); else if(k==='⌫') inp.value=inp.value.slice(0,-1); else inp.value+=k.toLowerCase(); };
+  inp.onkeydown=(e)=>{ if(e.key==='Enter') check(); };
+  setTimeout(()=>inp.focus(),80);
+}
+
+// right lane = mode selector + daily links
+function renderRight(){
+  $('rightMount').innerHTML=`
+    <div class="stack" style="margin-bottom:8px">
+      <button class="btn pill orange" data-r="compound">Compound</button>
+      <button class="btn pill" data-r="sight">Sight Pop</button>
+      <button class="btn pill" data-r="build">Build</button>
+    </div>
+    <div class="card" style="background:var(--paper)"><div class="q" style="font-size:16px">Daily links — same-link-same-stars</div><div style="font-family:ui-monospace,monospace;font-size:12px;margin-top:6px">
+      <a href="?daily=${dayCode}&n=1">?daily=${dayCode}&n=1 — Solo 1 (like video)</a><br/>
+      <a href="?daily=${dayCode}&n=3">?daily=${dayCode}&n=3 — Triple 3</a><br/>
+      <a href="?daily=${dayCode}&n=5">?daily=${dayCode}&n=5 — Full 5 pack</a>
+    </div><div style="margin-top:8px" class="progress"><i id="rprog" style="width:${(totalStars%50)/50*100}%"></i></div><div style="margin-top:6px;font-size:11px;font-family:ui-monospace,monospace">Stars ${totalStars%50}/50 → next badge • overall ${totalStars}/471 like video totals • streak ${streak}</div></div>
+    <div class="card" style="margin-top:10px"><div class="q" style="font-size:15px">Sight word lists</div><div class="stack" style="margin-top:6px">${Object.keys(DOLCH).map(k=>`<button class="btn pill" data-lvl="${k}">${k}</button>`).join('')}</div><div style="font-size:11px;color:#666;margin-top:6px;font-family:ui-monospace,monospace">Dolch Pre-K/K/1st/2nd/3rd • tap level filters games • audio uses system voice</div></div>
+  `;
+  $('rightMount').querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{ currentGame=b.dataset.r; if(currentGame==='compound') renderCompound(); else if(currentGame==='sight') renderSight(); else renderBuild(); });
+  $('rightMount').querySelectorAll('[data-lvl]').forEach(b=>b.onclick=()=>{ localStorage.setItem('whoe_level',b.dataset.lvl); renderSight(); });
+}
+
+function boot(){
+  renderRight();
+  if(currentGame==='compound') renderCompound(); else renderSight();
+}
+$('gamePicker').onclick=(e)=>{ let b=e.target.closest('.tile'); if(!b) return; currentGame=b.dataset.game; if(currentGame==='compound') renderCompound(); else if(currentGame==='sight') renderSight(); else renderBuild(); window.scrollTo({top:420,behavior:'smooth'}) };
+$('startCompound').onclick=()=>{currentGame='compound'; renderCompound();};
+$('startSight').onclick=()=>{currentGame='sight'; renderSight();};
+$('btnDaily').onclick=(e)=>{e.preventDefault(); location.href='?daily='+dayISO()+'&n=3';};
+$('btnClear').onclick=(e)=>{e.preventDefault(); localStorage.removeItem('whoe_stars'); localStorage.removeItem('whoe_streak'); totalStars=0; streak=0; $('pillStars').textContent='0'; $('pillStreak').textContent='0'; renderRight();};
+$('sayHelp').onclick=()=>speak('Who E — early reader word games. Compound link, sight words, build a word.');
+boot();
+</script>
+</body>
+</html>
