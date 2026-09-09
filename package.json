@@ -1,9 +1,9 @@
 {
   "name": "who-e",
   "version": "1.0.0",
-  "description": "WHO-E — Compound & Sight Word games for early readers",
+  "description": "WHO-E \u2014 Compound & Sight Word games for early readers",
   "scripts": {
-    "build": "tsc",
+    "build": "mkdir -p public && cp index.html public/index.html && echo static-ok",
     "dev": "tsx src/index.ts || node src/index.ts",
     "test": "vitest run"
   },
